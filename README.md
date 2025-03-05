@@ -8,7 +8,7 @@ ShopNexus is a data-driven e-commerce retailer specializing in trendy, high-qual
 
 # Schema & Analytical Framework
 
-![c9f42076-26c3-47d2-a49a-b6e66d57745c](https://github.com/user-attachments/assets/54bd14f2-5cd6-420a-aeb1-f4e192a0c6dd)
+![c9f42076-26c3-47d2-a49a-b6e66d57745c](https://github.com/user-attachments/assets/ee7f85be-097a-471d-874f-326a0048df25)
 
 This analysis defines the funnel stages as:\
 **Home → Products → Cart → Shipping → Billing → Thank You**
