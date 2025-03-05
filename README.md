@@ -20,6 +20,8 @@ This project aimed to increase conversions by testing two key optimizations:
 - **The new landing page had a minor positive effect, reducing bounce rate by 5%** and slightly increasing engagement, but **it did not drive a meaningful increase in conversions**.
 - **The highest-performing test group** (Old Landing Page + New Billing Page) **achieved a 3.5% conversion rate**, while the **lowest-performing group** (New Landing Page + Old Billing Page) **converted at just 2%**, indicating that **the landing page update may have negatively impacted performance**.
 - Overall, **sitewide conversion rate dropped to 2.4%** (a 20% decline from the 3% baseline), mainly because **traffic was distributed more heavily toward lower-performing test groups**.
+  
+![5d04bbc6-c7f7-4d0c-8369-85dc2b41f5b3](https://github.com/user-attachments/assets/0b9970d8-84f3-4df6-b6ad-46bb00ef3116)
 
 **If the best-performing test variation (Old Landing Page + New Billing Page) were applied sitewide, the estimated impact would be:**
 
