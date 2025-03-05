@@ -18,7 +18,7 @@ This project aimed to increase conversions by testing two key optimizations:
 # Key Findings
 - **The new billing page significantly improved conversions**, increasing the billing-to-order conversion rate by 14%, confirming that a simpler checkout experience reduces friction and leads to more completed purchases.
 - **The new landing page had a minor positive effect, reducing bounce rate by 5%** and slightly increasing engagement, but **it did not drive a meaningful increase in conversions**.
-- **The highest-performing test group** (Old Landing Page + New Billing Page) **achieved a 3.5% conversion rate**, while the **lowest-performing group** (New Landing Page + Old Billing Page) **converted at just 2.0%**, indicating that **the landing page update may have negatively impacted performance**.
+- **The highest-performing test group** (Old Landing Page + New Billing Page) **achieved a 3.5% conversion rate**, while the **lowest-performing group** (New Landing Page + Old Billing Page) **converted at just 2%**, indicating that **the landing page update may have negatively impacted performance**.
 - Overall, **sitewide conversion rate dropped to 2.4%** (a 20% decline from the 3% baseline), mainly because **traffic was distributed more heavily toward lower-performing test groups**.
 
 **If the best-performing test variation (Old Landing Page + New Billing Page) were applied sitewide, the estimated impact would be:**
