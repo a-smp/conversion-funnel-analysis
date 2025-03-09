@@ -3,8 +3,17 @@
 # Objective
 Analyze user drop-offs in the conversion funnel and test page optimizations through A/B experiments to improve engagement, reduce friction, and increase completed purchases.
 
-# Company Overview
-ShopNexus is a data-driven e-commerce retailer specializing in trendy, high-quality fashion and lifestyle products at competitive prices. Operating on a direct-to-consumer (DTC) model, the company leverages advanced analytics to refine marketing strategies, enhance customer engagement, and maximize conversions. By utilizing SEO, paid advertising, and personalized promotions, ShopNexus efficiently drives traffic and delivers a seamless shopping experience tailored to consumer preferences.
+# Business Problem
+
+![5d04bbc6-c7f7-4d0c-8369-85dc2b41f5b3](https://github.com/user-attachments/assets/5fd941ba-fbb8-437a-851e-adec77a4c8ab)
+
+The e-commerce site experiences high drop-off rates across the funnel, with **87%+ of users leaving before reaching the cart page**. Even among those who initiate checkout, **76.4% abandon their cart**, indicating friction in the billing process.
+
+💡 **How can we turn more visitors into paying customers?**\
+This project aimed to increase conversions by testing two key optimizations:
+
+1️⃣ A new landing page to improve engagement.\
+2️⃣ A new billing page to streamline checkout.
 
 # Schema & Analytical Framework
 
@@ -28,17 +37,7 @@ This analysis defines the funnel stages as:\
 - Device Type
 - New/Returning Users
 
-# Business Problem
 
-![5d04bbc6-c7f7-4d0c-8369-85dc2b41f5b3](https://github.com/user-attachments/assets/5fd941ba-fbb8-437a-851e-adec77a4c8ab)
-
-The e-commerce site experiences high drop-off rates across the funnel, with **87%+ of users leaving before reaching the cart page**. Even among those who initiate checkout, **76.4% abandon their cart**, indicating friction in the billing process.
-
-💡 **How can we turn more visitors into paying customers?**\
-This project aimed to increase conversions by testing two key optimizations:
-
-1️⃣ A new landing page to improve engagement.\
-2️⃣ A new billing page to streamline checkout.
 
 # Key Findings
 
