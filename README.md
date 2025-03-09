@@ -1,9 +1,9 @@
 # Conversion Funnel Optimization | ShopNexus
 
-# Objective
+## Objective
 Analyze user drop-offs in the conversion funnel and test page optimizations through A/B experiments to improve engagement, reduce friction, and increase completed purchases.
 
-# Business Problem
+## Business Problem
 
 ![5d04bbc6-c7f7-4d0c-8369-85dc2b41f5b3](https://github.com/user-attachments/assets/5fd941ba-fbb8-437a-851e-adec77a4c8ab)
 
@@ -15,14 +15,14 @@ This project aimed to increase conversions by testing two key optimizations:
 1️⃣ A new landing page to improve engagement.\
 2️⃣ A new billing page to streamline checkout.
 
-# Schema & Analytical Framework
+## Schema & Analytical Framework
 
 ![c9f42076-26c3-47d2-a49a-b6e66d57745c](https://github.com/user-attachments/assets/ee7f85be-097a-471d-874f-326a0048df25)
 
 This analysis defines the funnel stages as:\
 **Home → Products → Cart → Shipping → Billing → Thank You**
 
-## Metrics
+### Metrics
 - Sessions
 - Orders
 - Conversion Rate
@@ -32,14 +32,14 @@ This analysis defines the funnel stages as:\
 - Session Duration
 - Pages per Session
 
-## Dimensions
+### Dimensions
 - Traffic Sources
 - Device Type
 - New/Returning Users
 
 
 
-# Key Findings
+## Key Findings
 
 ![CleanShot 2025-03-05 at 18 05 45@2x](https://github.com/user-attachments/assets/fb7d0beb-7790-475e-8c1e-a7c74631ca4a)
 
@@ -53,7 +53,7 @@ This analysis defines the funnel stages as:\
 ✅ **+416 additional conversions**\
 ✅ **~$20,800 in additional revenue (assuming an AOV of $49.99)**
 
-# Next Steps
+## Next Steps
 ✔ Launch the new billing page sitewide to capture more completed orders.\
 ✔ Refine the landing page instead of fully replacing it.\
 ✔ Optimize mobile UX to improve conversion rates.\
