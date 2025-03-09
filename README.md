@@ -7,7 +7,7 @@ Analyze user drop-offs in the conversion funnel and test page optimizations thro
 
 ![5d04bbc6-c7f7-4d0c-8369-85dc2b41f5b3](https://github.com/user-attachments/assets/5fd941ba-fbb8-437a-851e-adec77a4c8ab)
 
-The e-commerce site experiences high drop-off rates across the funnel, with **87%+ of users leaving before reaching the cart page**. Even among those who initiate checkout, **76.4% abandon their cart**, indicating friction in the billing process.
+The ShopNexus e-commerce site experiences high drop-off rates across the funnel, with **87%+ of users leaving before reaching the cart page**. Even among those who initiate checkout, **76.4% abandon their cart**, indicating friction in the billing process.
 
 💡 **How can we turn more visitors into paying customers?**\
 This project aimed to increase conversions by testing two key optimizations:
