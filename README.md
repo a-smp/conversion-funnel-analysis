@@ -53,6 +53,8 @@ This analysis defines the funnel stages as:\
 ✅ **+416 additional conversions**\
 ✅ **~$20,800 in additional revenue (assuming an AOV of $49.99)**
 
+The impact breakdown revealed that traffic sources, device types, and A/B test results uniquely influence conversions. To ensure data-driven decisions, a dashboard was created to monitor traffic quality, track conversion performance by source and device, and measure marketing effectiveness—enabling optimizations in ad spend, mobile UX, and user engagement.
+
 ## Next Steps
 ✔ Launch the new billing page sitewide to capture more completed orders.\
 ✔ Refine the landing page instead of fully replacing it.\
