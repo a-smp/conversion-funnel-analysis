@@ -638,3 +638,455 @@ FROM session_landing_page slp
        ON slp.website_session_id = od.website_session_id
 WHERE landing_page = '/home'
 ;
+
+
+
+-- TRAFFIC SOURCE IMPACT
+
+
+-- Group 1 CVR per traffic source
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+        ) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+    WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+
+),
+
+sessions_without_billing_2 AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing-2' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing-2'
+)
+
+SELECT
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+	ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g1_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing_2 sb  -- Ensure no visits to '/billing-2'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/home'
+GROUP BY 1
+;
+
+-- Paid Search CVR: 2.39%
+-- Organic Search CVR: 1.86%
+-- Direct Type-in CVR: 2.31%
+
+
+-- Group 2 CVR per traffic source
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+        ) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+    WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+),
+
+sessions_without_billing AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing'
+)
+
+SELECT
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+	ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g2_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing sb  -- Ensure no visits to '/billing'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/home'
+GROUP BY 1
+;
+
+-- Paid Search CVR: 3.16%
+-- Organic Search CVR: 3.93%
+-- Direct Type-in CVR: 3.34%
+
+
+-- Group 3 Conversion Rate for Paid Search
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+         ) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+	 WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+),
+
+sessions_without_billing_2 AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing-2' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing-2'
+)
+
+SELECT
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+    ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g3_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing_2 sb  -- Ensure no visits to '/billing-2'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/lander-1'
+GROUP BY 1
+;
+
+-- Paid Search CVR: 1.97%
+-- Organic Search CVR: NULL
+-- Direct Type-in CVR: NULL
+
+
+-- Group 4 Conversion Rate for Paid Search
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+	) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+    WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+),
+
+sessions_without_billing AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing'
+)
+
+SELECT
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+    ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g4_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing sb  -- Ensure no visits to '/billing'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/lander-1'
+GROUP BY 1
+;
+
+-- Paid Search CVR: 2.72%
+-- Organic Search CVR: NULL
+-- Direct Type-in CVR: NULL
+
+-- The result is null because the new landing page was only tested on Paid Search (gsearch nonbrand), meaning groups 3 and 4 do not have recorded sessions from organic or direct traffic.
+
+
+-- 
+-- Group 1 CVR per traffic source & device type
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+        ) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+	 WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+
+),
+
+sessions_without_billing_2 AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing-2' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing-2'
+)
+
+SELECT
+    ws.device_type,
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+    ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g1_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing_2 sb  -- Ensure no visits to '/billing-2'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/home'
+GROUP BY 1, 2
+;
+
+-- Desktop
+-- Paid Search CVR: 3.16%
+-- Organic Search CVR: 2.49%
+-- Direct Type-in CVR: 3.29%
+
+-- Mobile
+-- Paid Search CVR: 0.93%
+-- Organic Search CVR: 0.72%
+-- Direct Type-in CVR: 1.04%
+
+
+-- Group 2 CVR per traffic source & device type
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+	) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+    WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+),
+
+sessions_without_billing AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing'
+)
+
+SELECT
+    ws.device_type,
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+    ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g2_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing sb  -- Ensure no visits to '/billing'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/home'
+GROUP BY 1, 2
+;
+
+-- Desktop
+-- Paid Search CVR: 3.98%
+-- Organic Search CVR: 5.31%
+-- Direct Type-in CVR: 4.34%%
+
+-- Mobile
+-- Paid Search CVR: 1.66%
+-- Organic Search CVR: 1.26%
+-- Direct Type-in CVR: 2.06%
+
+
+-- Group 3 CVR per traffic source & device type
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+         ) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+    WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+),
+
+sessions_without_billing_2 AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing-2' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing-2'
+)
+
+SELECT
+    ws.device_type,
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+    ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g3_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing_2 sb  -- Ensure no visits to '/billing-2'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/lander-1'
+GROUP BY 1, 2
+;
+
+-- Desktop
+-- Paid Search CVR: 2.33%
+
+-- Mobile
+-- Paid Search CVR: 0.61%
+
+
+-- Group 4 CVR per traffic source and device type
+WITH
+session_landing_page AS (
+    SELECT
+        ep.website_session_id,
+        wp.pageview_url AS landing_page
+    FROM (
+        SELECT
+            website_session_id,
+            MIN(website_pageview_id) AS landing_pv_id
+        FROM website_pageviews
+        GROUP BY website_session_id
+	) ep
+	JOIN website_pageviews wp
+	  ON ep.landing_pv_id = wp.website_pageview_id
+    WHERE created_at BETWEEN '2012-10-01' AND '2012-12-31'
+),
+
+sessions_without_billing AS (
+    SELECT website_session_id
+    FROM website_pageviews
+    GROUP BY website_session_id
+    HAVING SUM(CASE WHEN pageview_url = '/billing' THEN 1 ELSE 0 END) = 0  -- Exclude sessions that visited '/billing'
+)
+
+SELECT
+    ws.device_type,
+    CASE
+	WHEN utm_source IN ('gsearch', 'bsearch') AND utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN utm_source IS NULL AND http_referer IS NULL THEN 'direct_type_in'
+	WHEN utm_source IS NULL AND http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_source,
+    ROUND((COUNT(DISTINCT od.order_id) / COUNT(DISTINCT slp.website_session_id)) * 100, 2) AS g4_conv_rate
+FROM session_landing_page slp
+     JOIN sessions_without_billing sb  -- Ensure no visits to '/billing'
+       ON slp.website_session_id = sb.website_session_id
+     LEFT JOIN orders od
+       ON slp.website_session_id = od.website_session_id
+     LEFT JOIN website_sessions ws
+       ON slp.website_session_id = ws.website_session_id
+WHERE landing_page = '/lander-1'
+GROUP BY 1, 2
+;
+
+-- Desktop
+-- Paid Search CVR: 3.2%
+
+-- Mobile
+-- Paid Search CVR: 0.9%
+
+
+
+-- Dashboard Dataset
+WITH
+agg_metrics AS (
+SELECT
+    ws.website_session_id,
+    COUNT(DISTINCT wp.website_pageview_id) AS pages_visited,
+    MIN(wp.created_at) AS first_pg_time,
+    MAX(wp.created_at) AS last_pg_time
+FROM website_sessions ws
+     JOIN website_pageviews wp
+       ON ws.website_session_id = wp.website_session_id
+GROUP BY 1
+)
+
+SELECT
+    ws.website_session_id,
+    DATE(ws.created_at) AS date,
+    TIME(ws.created_at) as time,
+    ws.is_repeat_session,
+    CASE
+	WHEN ws.utm_source IN ('gsearch', 'bsearch') AND ws.utm_campaign IN ('nonbrand', 'brand') THEN 'paid_search'
+	WHEN ws.utm_source IS NULL AND ws.http_referer IS NULL THEN 'direct_type_in'
+	WHEN ws.utm_source IS NULL AND ws.http_referer IS NOT NULL THEN 'organic_search'
+    END AS traffic_channel,
+    ws.utm_source,
+    ws.utm_campaign,
+    ws.device_type,
+    TIMESTAMPDIFF(SECOND, am.first_pg_time, am.last_pg_time) / 60 AS duration_minutes,
+    am.pages_visited,
+    od.order_id
+FROM website_sessions ws
+     LEFT JOIN agg_metrics am
+       ON ws.website_session_id = am.website_session_id
+     LEFT JOIN orders od
+       ON ws.website_session_id = od.website_session_id
+;
