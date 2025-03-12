@@ -55,6 +55,9 @@ This analysis defines the funnel stages as:\
 
 The impact breakdown revealed that traffic sources, device types, and A/B test results uniquely influence conversions. To ensure data-driven decisions, a dashboard was created to monitor traffic quality, track conversion performance by source and device, and measure marketing effectiveness—enabling optimizations in ad spend, mobile UX, and user engagement.
 
+![Untitled design (28)](https://github.com/user-attachments/assets/b9754acb-edf1-40d2-9a73-1bbedaed35f8)
+[View Tableau Dashboard](https://public.tableau.com/views/ShopNexusTrafficDashboard/TrafficDashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 ## Next Steps
 ✔ Launch the new billing page sitewide to capture more completed orders.\
 ✔ Refine the landing page instead of fully replacing it.\
