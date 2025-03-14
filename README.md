@@ -9,9 +9,9 @@ Analyze user drop-offs in the conversion funnel and test page optimizations thro
 
 The ShopNexus e-commerce site experiences high drop-off rates across the funnel, with **87%+ of users leaving before reaching the cart page**. Even among those who initiate checkout, **76.4% abandon their cart**, indicating friction in the billing process.
 
-💡 **How can we turn more visitors into paying customers?**\
-This project aimed to increase conversions by testing two key optimizations:
+💡 **How can we turn more visitors into paying customers?**
 
+This project aimed to increase conversions by testing two key optimizations:\
 1️⃣ A new landing page to improve engagement.\
 2️⃣ A new billing page to streamline checkout.
 <br><br>
@@ -57,6 +57,9 @@ If the Old Landing Page + New Billing Page were applied sitewide, the estimated 
 ✅ +416 additional conversions\
 ✅ ~$20,800 in additional revenue (assuming an AOV of $49.99)
 <br><br>
+
+---
+<br>
 
 The impact breakdown revealed that traffic sources, device types, and A/B test results uniquely influence conversions. To ensure data-driven decisions, a dashboard was created to monitor traffic quality, track conversion performance by source and device, and measure marketing effectiveness—enabling optimizations in ad spend, mobile UX, and user engagement.
 
