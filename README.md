@@ -2,7 +2,6 @@
 
 # Objective
 Analyze user drop-offs in the conversion funnel and test page optimizations through A/B experiments to improve engagement, reduce friction, and increase completed purchases.
-<br><br>
 
 # Business Problem
 
