@@ -279,46 +279,6 @@ GROUP BY 1
 ;
 
 
-WITH
-session_pageview_details AS (
-    SELECT
-	ws.website_session_id,
-	COUNT(DISTINCT wp.website_pageview_id) AS pages_visited,
-    MIN(wp.website_pageview_id) AS landing_page_id,
-	MIN(wp.created_at) first_pg_time,
-	MAX(wp.created_at) last_pg_time
-    FROM website_sessions ws
-	 JOIN website_pageviews wp
-	   ON ws.website_session_id = wp.website_session_id
-	   AND ws.created_at BETWEEN '2012-06-19' AND '2012-07-28'
-	   AND ws.utm_source = 'gsearch'
-	   AND ws.utm_campaign = 'nonbrand'
-    GROUP BY 1
-)
-
-SELECT
-    wp.pageview_url,
-    COUNT(DISTINCT spd.website_session_id) AS sessions,
-    ROUND((COUNT(DISTINCT CASE WHEN spd.pages_visited = 1 THEN spd.website_session_id ELSE NULL END)
-		/ COUNT(DISTINCT spd.website_session_id))
-    	* 100, 2) AS bounce_rate,
-    COUNT(DISTINCT orders.order_id) AS orders,
-    ROUND((COUNT(DISTINCT orders.order_id)
-		/ COUNT(DISTINCT spd.website_session_id))
-    	* 100, 2) AS conv_rate,
-    ROUND(AVG(TIMESTAMPDIFF(SECOND, spd.first_pg_time, spd.last_pg_time)
-	/ 60), 2) AS avg_session_minutes,
-    ROUND(AVG(spd.pages_visited), 2) AS avg_pages_per_session
-FROM session_pageview_details spd
-     LEFT JOIN website_pageviews wp
-       ON spd.landing_page_id = wp.website_pageview_id
-     LEFT JOIN orders
-       ON spd.website_session_id = orders.website_session_id
-GROUP BY 1
-;
-
-
-
 
 -- BILLING PAGE TEST PERFORMANCE
 
