@@ -17,30 +17,12 @@ This project aimed to increase conversions by testing two key optimizations:
 2️⃣ A new billing page to streamline checkout.
 <br><br>
 
-# Schema & Analytical Framework
+# Executive Summary
 
-![c9f42076-26c3-47d2-a49a-b6e66d57745c](https://github.com/user-attachments/assets/ee7f85be-097a-471d-874f-326a0048df25)
-
-This analysis defines the funnel stages as:\
-**Home → Products → Cart → Shipping → Billing → Thank You**
-
-### Metrics
-- Sessions
-- Orders
-- Conversion Rate
-- Bounce Rate
-- Cart Abandonment Rate (CAR)
-- Clickthrough Rate (or drop-off rate)
-- Session Duration
-- Pages per Session
-
-### Dimensions
-- Traffic Sources
-- Device Type
-- New/Returning Users
+Elist has a major opportunity to increase conversions and revenue by addressing inefficiencies in traffic acquisition and user experience. Paid Search accounts for 94% of traffic but has a 60% bounce rate, suggesting a misalignment between ads and site content. While checkout improvements boosted conversions by 14%, cart abandonment remains high, and mobile performance lags, with a conversion rate of just 1% versus 4% on desktop. If optimized effectively, Elist could gain 416 additional conversions and $20,800 in revenue. Prioritizing better Paid Search targeting, marketing funnel alignment, and mobile optimization will drive higher engagement and long-term growth.
 <br><br>
 
-# Key Findings
+# Key Findings Deep Dive
 
 ## Checkout Optimization Drove the Largest Conversion Gains
 
@@ -101,7 +83,6 @@ By increasing the relevance and quality of Paid Search traffic, we can expect:\
 ✅ Lower bounce rates, as visitors find content more aligned with their intent.\
 ✅ Higher pages per session and session duration, leading to stronger engagement.\
 ✅ Increased conversion rates, driving more revenue without additional ad spend.
-<br><br>
 
 ## 2. Strengthen Conversion Funnel Alignment Between Marketing & Product Teams
 
@@ -118,7 +99,6 @@ By aligning marketing campaigns with the user journey, we can expect:\
 ✅ Lower Paid Search bounce rates, as visitors find more relevant content.\
 ✅ Smoother conversion flows, reducing drop-offs between funnel stages.\
 ✅ More efficient marketing spend, maximizing ROI from Paid Search campaigns.
-<br><br>
 
 ## 3. Personalize the Mobile Experience to Drive Higher Engagement
 
