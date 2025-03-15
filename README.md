@@ -18,7 +18,7 @@ This project aimed to increase conversions by testing two key optimizations:\
 
 # Executive Summary
 
-ShopNexus has a major opportunity to increase conversions and revenue by addressing inefficiencies in traffic acquisition and user experience. Paid Search accounts for 94% of traffic but has a 60% bounce rate, suggesting a misalignment between ads and site content. While checkout improvements boosted conversions by 14%, cart abandonment remains high, and mobile performance lags, with a conversion rate of just 1% versus 4% on desktop. If optimized effectively, Elist could gain 416 additional conversions and $20,800 in revenue. Prioritizing better Paid Search targeting, marketing funnel alignment, and mobile optimization will drive higher engagement and long-term growth.
+Elist’s e-commerce conversion funnel struggles with inefficiencies in traffic quality, marketing alignment, and mobile performance, leading to high drop-off rates and lost revenue opportunities. Paid Search, which accounts for 94% of traffic, has a 60% bounce rate, indicating misalignment between ads and site content. While a billing page update improved conversions by 14%, cart abandonment remains high at 75.7%, and mobile users convert at just 1% compared to 4% on desktop, highlighting critical usability gaps. To address these challenges, Elist should refine Paid Search targeting to attract higher-intent users, align marketing and product strategies to create a seamless user journey, and optimize the mobile experience to improve engagement and conversions. These improvements will drive more efficient marketing spend, reduce friction in the purchase process, and unlock significant revenue growth potential.
 <br><br>
 
 # Key Findings Deep Dive
