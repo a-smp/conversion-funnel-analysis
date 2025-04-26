@@ -63,7 +63,7 @@ If the Old Landing Page + New Billing Page were applied sitewide, the estimated 
 
 The impact breakdown revealed that traffic sources, device types, and A/B test results uniquely influence conversions. To ensure data-driven decisions, a dashboard was created to monitor traffic quality, track conversion performance by source and device, and measure marketing effectiveness—enabling optimizations in ad spend, mobile UX, and user engagement.
 
-![CleanShot 2025-04-25 at 22 50 30@2x](https://github.com/user-attachments/assets/252b6630-6cb9-4571-a090-f71fd930485d)
+![CleanShot 2025-04-25 at 22 59 04@2x](https://github.com/user-attachments/assets/af82bfa3-dce7-4878-9d31-28ec2b103f72)
 [View Tableau Dashboard](https://public.tableau.com/views/ShopNexusTrafficDashboard/TrafficDashboardv2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 <br><br>
 
